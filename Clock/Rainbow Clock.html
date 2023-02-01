@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Digital Clock</title>
+  <style>
+    body {
+      background-color: black;
+    }
+
+    #clock {
+      background-color: red;
+      color: #fff;
+      display: flex;
+      height: 228px;
+      width: 623px;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid white;
+      animation: clock 1s ease-in 0s infinite alternate-reverse ;
+    }
+
+    #clock:hover {
+      background-color: rgb(116, 15, 70);
+      height: 40vh;
+    }
+
+    #time {
+      font-size: 60px;
+    }
+
+    .block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    @keyframes clock {
+      0%{
+        background-color: red;
+      }
+      14%{
+        background-color: orange;
+      }
+      28%{
+        background-color: yellow;
+      }
+      42%{
+        background-color: green;
+      }
+      56%{
+        background-color: blue;
+      }
+      70%{
+        background-color: indigo;
+      }
+      84%{
+        background-color: violet;
+      }
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div class="block">
+    <div id="clock">
+      <div id="time"></div>
+    </div>
+    <script src="script.js"></script>
+  </div>
+</body>
+<script>
+  const time = document.querySelector("#time");
+
+  function displayTime() {
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
+
+    time.innerHTML = `${hours}:${minutes}:${seconds}`;
+  }
+
+  setInterval(displayTime, 1000);
+
+</script>
+
+</html>
